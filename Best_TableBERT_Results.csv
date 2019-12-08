@@ -1,0 +1,6 @@
+Dataset,Accuracy,F1,Loss
+Dev,0.6487,0.6867,0.5943
+Simple_Test,0.7719,0.7862,0.4634
+Complex_Test,0.5754,0.6286,0.6645
+Test,0.6395,0.6776,0.5994
+Small Test,0.6574,0.687,0.5772
