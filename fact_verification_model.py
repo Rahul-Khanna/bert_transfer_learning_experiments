@@ -14,8 +14,8 @@ HIDDEN_STATE_DIM = 768
 """
     The idea here being, lets just assume the hidden vector of the last layer of the CLS token from a
     BERT based model is somewhat reliable. in terms of being a good encoder of information. We 
-    then take that encoding and train a single layer perceptron to do the final classification for us.
-    So instead of tuning all the weights we just tune the single layer perceptron weights. For overfitting
+    then take that encoding and train a single linear projection weights to do the final classification for us.
+    So instead of tuning all the weights we just tune the single linear projection weights. For overfitting
     reasons I added a small dropout layer as well.
 
     Can handle both Roberta and Bert models

@@ -36,6 +36,10 @@ Experiment Number 2:
 
 in `outputs_fact-first_horizontal` you will find a file called `eval_metrics.txt` which will have the evaluation results you are looking for.
 
+`eval_metrics.txt` stores the following dictionaries:
+    
+    {step_number: {'loss': training_loss, 'global_step': step_number, 'eval_loss': eval_loss, 'acc_and_f1': average_of_dev_f1_and_acc, 'acc': dev_acc, 'f1': dev_f1}}
+
 You can also view the report in this github, it is Report.ipynb
 
 This code is heavily reliant on the code found here: https://github.com/wenhuchen/Table-Fact-Checking.git
