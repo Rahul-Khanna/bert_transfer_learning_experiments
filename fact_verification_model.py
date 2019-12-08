@@ -24,11 +24,13 @@ class FactVerificationClf(nn.Module):
     def __init__(self, model_name, model_type="bert", freeze_model=True, dropout_pct=0.2, num_classes=2):
         super(FactVerificationClf, self).__init__()
 
+        # loading correct pre-trained model
         if model_type == "bert":
             self.encoding_layer = BertModel.from_pretrained(model_name)
         else:
             self.encoding_layer = RobertaModel.from_pretrained(model_name)
 
+        # "freezes" all parameters associated with BERT
         if freeze_model:
             for p in self.encoding_layer.parameters():
                 p.requires_grad = False

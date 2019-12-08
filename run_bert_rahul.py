@@ -51,7 +51,7 @@ My main changes:
     * Though did keep the gradient_accumulation_steps concept (just commented it out for now)
         * I'm interested to explore that more
 5. Changed model saving and loading
-6. Changed model (frozen BERT/ RoBERTa -- just tune final MLP portion)
+6. Changed model (frozen BERT/ RoBERTa -- just tune final linear projection)
 
 Driver for running frozen BERT and frozen RoBERTa experiments.
 """
@@ -131,7 +131,7 @@ def build_features(args, examples, label_list, tokenizer, train=True):
         Builds the corresponding feature set for whatever portion of data is sent in
         Attempts to load a cached version of the data if available and user allows it
 
-        Building feature function is directly ported from:
+        convert_examples_to_features function is directly ported from:
         https://github.com/wenhuchen/Table-Fact-Checking/blob/master/code/run_BERT.py
 
         and can be found in prepare_data_for_bert.py
@@ -193,7 +193,7 @@ def eval_and_save(args, global_step, period_info, model, optimizer, device, proc
         Code partly taken from:
         https://github.com/wenhuchen/Table-Fact-Checking/blob/master/code/run_BERT.py
         
-        I have different save functionality though, and the my evaluate function signature is
+        I have different save functionality though, and my evaluate function signature is
         different.
     """
     
@@ -251,7 +251,6 @@ def main():
     logger.info("Running %s" % ' '.join(sys.argv))
 
     parser = argparse.ArgumentParser()
-    ## Required parameters
     parser.add_argument("--do_train",
                         action='store_true',
                         help="Whether to run training.")
@@ -291,7 +290,6 @@ def main():
     parser.add_argument("--balance",
                         action='store_true',
                         help="balance between + and - samples for training.")
-    ## Other parameters
     parser.add_argument("--model_type",
                         default="bert",
                         type=str,
